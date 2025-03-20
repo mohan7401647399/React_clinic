@@ -1,3 +1,4 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import './App.css';
 import Footer from './components/Footer';
 import ForgotPassword from './components/ForgotPassword';
@@ -9,15 +10,19 @@ import Signup from './components/Signup';
 
 function App() {
   return (
-    <div className="App">
-      <Navbar />
-      <Signup />
-      <Login />
-      <ForgotPassword />
-      <HomePage />
-      <PatientPage />
-      <Footer />
-    </div>
+    <Router>
+      <div className="App">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={ <HomePage /> } />
+          <Route path="/signup" element={ <Signup /> } />
+          <Route path="/login" element={ <Login /> } />
+          <Route path="/forgot-password" element={ <ForgotPassword /> } />
+          <Route path="/patient" element={ <PatientPage /> } />
+        </Routes>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 

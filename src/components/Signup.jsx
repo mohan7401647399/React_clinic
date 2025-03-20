@@ -1,5 +1,6 @@
 import { useState } from "react";
 import signup_logo from '../Assets/Signup_Logo.png'
+import user_logo from '../Assets/mdi_patient.png'
 
 const Signup = () => {
     const [formData, setFormData] = useState({
@@ -26,20 +27,23 @@ const Signup = () => {
     };
 
     return (
-        <div className="flex items-center justify-center min-h-screen bg-gray-100">
-            <div className="p-10">
-                <img src={ signup_logo } alt="Signup_Logo" className="h-96 w-96" />
+        <div className="flex flex-col md:flex-row items-center justify-center min-h-screen bg-gray-100 p-5">
+            {/* Signup Logo */ }
+            <div className="p-5">
+                <img src={ signup_logo } alt="Signup Logo" className="max-w-sm" />
             </div>
-            <div className="bg-white shadow-lg rounded-lg p-5 m-10 max-w-2xl">
+
+            {/* Signup Form */ }
+            <div className="bg-white shadow-lg rounded-lg p-5 sm:p-10 m-5 sm:m-10 w-full max-w-lg">
                 {/* Header */ }
                 <div className="bg-gray-100 p-3 rounded-md mb-6">
-                    <h2 className="text-xl font-bold text-teal-600 flex items-center">
-                        ✅ SIGN UP
+                    <h2 className="text-xl font-bold text-teal-600 flex flex-col items-center">
+                        <span className="flex items-center space-x-2"><img src={ user_logo } alt="user logo" />SIGN UP </span>
                     </h2>
                 </div>
 
                 {/* Form */ }
-                <p className="text-gray-600 mb-4">
+                <p className="text-gray-600 mb-4 text-center">
                     Let's get you all set up so you can access your personal account.
                 </p>
                 <form onSubmit={ handleSubmit } className="space-y-4">
