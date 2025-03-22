@@ -1,30 +1,12 @@
-import { useState } from "react";
+import { useContext } from "react";
 import signup_logo from '../Assets/Signup_Logo.png'
 import user_logo from '../Assets/mdi_patient.png'
+import { FaEye } from "react-icons/fa";
+import { FaEyeSlash } from "react-icons/fa6";
+import { userContext } from "./contextAPI";
 
 const Signup = () => {
-    const [formData, setFormData] = useState({
-        firstName: "",
-        lastName: "",
-        email: "",
-        phone: "",
-        password: "",
-        confirmPassword: "",
-        agree: false,
-    });
-
-    const handleChange = (e) => {
-        const { name, value, type, checked } = e.target;
-        setFormData({
-            ...formData,
-            [name]: type === "checkbox" ? checked : value,
-        });
-    };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log("Form Data:", formData);
-    };
+    const { show, setShow, showConfirmPassword, setShowConfirmPassword, formData, signUpError, signupHandleChange, signupHandleSubmit } = useContext(userContext);
 
     return (
         <div className="flex flex-col md:flex-row items-center justify-center min-h-screen bg-gray-100 p-5">
@@ -46,7 +28,8 @@ const Signup = () => {
                 <p className="text-gray-600 mb-4 text-center">
                     Let's get you all set up so you can access your personal account.
                 </p>
-                <form onSubmit={ handleSubmit } className="space-y-4">
+                { signUpError && <p className="text-red-500 text-center">{ signUpError }</p> }
+                <form onSubmit={ signupHandleSubmit } className="space-y-4">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
                             <label className="block text-gray-700 text-sm">First Name</label>
@@ -54,7 +37,7 @@ const Signup = () => {
                                 type="text"
                                 name="firstName"
                                 value={ formData.firstName }
-                                onChange={ handleChange }
+                                onChange={ signupHandleChange }
                                 placeholder="Enter Your First Name"
                                 className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-teal-400"
                                 required
@@ -66,7 +49,7 @@ const Signup = () => {
                                 type="text"
                                 name="lastName"
                                 value={ formData.lastName }
-                                onChange={ handleChange }
+                                onChange={ signupHandleChange }
                                 placeholder="Enter Your Last Name"
                                 className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-teal-400"
                                 required
@@ -80,7 +63,7 @@ const Signup = () => {
                                 type="email"
                                 name="email"
                                 value={ formData.email }
-                                onChange={ handleChange }
+                                onChange={ signupHandleChange }
                                 placeholder="Enter Your Email Id"
                                 className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-teal-400"
                                 required
@@ -92,7 +75,7 @@ const Signup = () => {
                                 type="tel"
                                 name="phone"
                                 value={ formData.phone }
-                                onChange={ handleChange }
+                                onChange={ signupHandleChange }
                                 placeholder="Enter Your Phone Number"
                                 className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-teal-400"
                                 required
@@ -100,35 +83,45 @@ const Signup = () => {
                         </div>
                     </div>
                     <div>
-                        <label className="block text-gray-700 text-sm">Password</label>
-                        <input
-                            type="password"
-                            name="password"
-                            value={ formData.password }
-                            onChange={ handleChange }
-                            placeholder="********************"
-                            className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-teal-400"
-                            required
-                        />
+                        <label className="block text-gray-700 text-sm mb-1">Password</label>
+                        <div className="relative">
+                            <input
+                                type={ show ? "text" : "password" }
+                                name="password"
+                                value={ formData.password }
+                                onChange={ signupHandleChange }
+                                placeholder="********************"
+                                className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-teal-400"
+                                required
+                            />
+                            <span className="absolute right-3 top-3 text-gray-500" onClick={ () => setShow(prev => !prev) }>
+                                { show ? <FaEyeSlash /> : <FaEye /> }
+                            </span>
+                        </div>
                     </div>
                     <div>
                         <label className="block text-gray-700 text-sm">Confirm Password</label>
-                        <input
-                            type="password"
-                            name="confirmPassword"
-                            value={ formData.confirmPassword }
-                            onChange={ handleChange }
-                            placeholder="********************"
-                            className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-teal-400"
-                            required
-                        />
+                        <div className="relative">
+                            <input
+                                type={ showConfirmPassword ? "text" : "password" }
+                                name="confirmPassword"
+                                value={ formData.confirmPassword }
+                                onChange={ signupHandleChange }
+                                placeholder="********************"
+                                className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-teal-400"
+                                required
+                            />
+                            <span className="absolute right-3 top-3 text-gray-500" onClick={ () => setShowConfirmPassword(prev => !prev) }>
+                                { showConfirmPassword ? <FaEyeSlash /> : <FaEye /> }
+                            </span>
+                        </div>
                     </div>
                     <div className="flex items-center">
                         <input
                             type="checkbox"
                             name="agree"
                             checked={ formData.agree }
-                            onChange={ handleChange }
+                            onChange={ signupHandleChange }
                             className="mr-2"
                             required
                         />

@@ -1,27 +1,12 @@
-import { useState } from "react";
-import { FaLock } from "react-icons/fa";
+import { useContext } from "react";
 import user_logo from '../Assets/mdi_patient.png'
 import login_logo from '../Assets/Login_logo.png'
+import { FaEye } from "react-icons/fa";
+import { FaEyeSlash } from "react-icons/fa6";
+import { userContext } from "../components/contextAPI.jsx";
 
 const Login = () => {
-    const [formData, setFormData] = useState({
-        email: "",
-        password: "",
-        rememberMe: false
-    });
-
-    const handleChange = (e) => {
-        const { name, value, type, checked } = e.target;
-        setFormData({
-            ...formData,
-            [name]: type === "checkbox" ? checked : value,
-        });
-    };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log("Login Data:", formData);
-    };
+    const { show, setShow, loginFormData, error, handleChange, handleSubmit } = useContext(userContext);
 
     return (
         <div className="min-h-screen flex flex-col md:flex-row items-center justify-center bg-gray-100 p-5">
@@ -38,6 +23,8 @@ const Login = () => {
                     Login to access your Patient account
                 </p>
 
+                { error && <p className="text-red-500 text-center">{ error }</p> }
+
                 <form onSubmit={ handleSubmit } className="space-y-4">
                     {/* Email Input */ }
                     <div>
@@ -46,15 +33,12 @@ const Login = () => {
                             <input
                                 type="email"
                                 name="email"
-                                value={ formData.email }
+                                value={ loginFormData.email }
                                 onChange={ handleChange }
                                 placeholder="Patientemail@gmail.com"
                                 className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-teal-400"
                                 required
                             />
-                            <span className="absolute right-3 top-3 text-gray-500">
-                                ➤
-                            </span>
                         </div>
                     </div>
 
@@ -63,15 +47,17 @@ const Login = () => {
                         <label className="block text-gray-700 text-sm mb-1">Password</label>
                         <div className="relative">
                             <input
-                                type="password"
+                                type={ show ? "text" : "password" }
                                 name="password"
-                                value={ formData.password }
+                                value={ loginFormData.password }
                                 onChange={ handleChange }
                                 placeholder="********************"
                                 className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-teal-400"
                                 required
                             />
-                            <FaLock className="absolute right-3 top-3 text-gray-500" />
+                            <span className="absolute right-3 top-3 text-gray-500" onClick={ () => setShow(prev => !prev) }>
+                                { show ? <FaEyeSlash /> : <FaEye /> }
+                            </span>
                         </div>
                     </div>
 
@@ -81,7 +67,7 @@ const Login = () => {
                             <input
                                 type="checkbox"
                                 name="rememberMe"
-                                checked={ formData.rememberMe }
+                                checked={ loginFormData.rememberMe }
                                 onChange={ handleChange }
                                 className="mr-2"
                             />

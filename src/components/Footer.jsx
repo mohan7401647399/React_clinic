@@ -9,8 +9,8 @@ import pinterest from '../Assets/pinterest.png'
 
 const Footer = () => {
     return (
-        <footer className="bg-teal-700 text-white py-8">
-            <div className="container mx-auto px-6 md:px-12 lg:px-20">
+        <footer className="bg-teal-700 text-white py-2">
+            <div className="mx-auto px-6 md:px-12 lg:px-20">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {/* Left Section - About */ }
                     <div className="flex flex-col items-start">
@@ -49,17 +49,17 @@ const Footer = () => {
                     <div className="flex flex-col items-center">
                         <h3 className="text-lg font-bold">Download app</h3>
                         <div className="flex space-x-4 mt-3">
-                            <img src={ android } alt="Android App" className="w-10 h-10" />
-                            <img src={ apple } alt="iOS App" className="w-10 h-10" />
+                            <img src={ android } alt="Android App" className="w-10 h-10 hover:scale-110" />
+                            <img src={ apple } alt="iOS App" className="w-10 h-10 hover:scale-110" />
                         </div>
 
                         <h3 className="text-lg font-bold mt-6">Follow Us</h3>
                         <div className="flex space-x-3 mt-3">
-                            <img src={ facebook } alt="Facebook" className="w-8 h-8" />
-                            <img src={ instagram } alt="Instagram" className="w-8 h-8" />
-                            <img src={ linkedin } alt="LinkedIn" className="w-8 h-8" />
-                            <img src={ youtube } alt="YouTube" className="w-8 h-8" />
-                            <img src={ pinterest } alt="Pinterest" className="w-8 h-8" />
+                            <img src={ facebook } alt="Facebook" className="w-8 h-8 hover:scale-110" />
+                            <img src={ instagram } alt="Instagram" className="w-8 h-8 hover:scale-110" />
+                            <img src={ linkedin } alt="LinkedIn" className="w-8 h-8 hover:scale-110" />
+                            <img src={ youtube } alt="YouTube" className="w-8 h-8 hover:scale-110" />
+                            <img src={ pinterest } alt="Pinterest" className="w-8 h-8 hover:scale-110" />
                         </div>
                     </div>
                 </div>
