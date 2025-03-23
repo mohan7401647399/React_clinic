@@ -46,7 +46,7 @@ const HomePage = () => {
 
 
             {/* Appointment section */ }
-            <div className="fixed flex justify-center md:justify-end p-6 blink">
+            <div className="fixed bottom-0 flex justify-center md:justify-end p-6 blink">
                 <a href="/user" className="bg-orange-600 font-semibold text-white px-10 py-6 rounded-full hover:bg-gray-800 hover:scale-105 transition">
                     Consult a Doctor Now
                 </a>
