@@ -51,6 +51,7 @@ Follow these steps to set up the project locally:
 
 ## 📸 Screenshots
 _(Add some screenshots of the app interface here)_
+![Screenshot](https://github.com/mohan7401647399/React_clinic/blob/main/src/Assets/homepage.png)
 
 ## 🤝 Contributing
 Contributions are welcome! Follow these steps:
