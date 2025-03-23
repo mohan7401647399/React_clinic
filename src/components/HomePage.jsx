@@ -61,11 +61,11 @@ const HomePage = () => {
                     Consult Doctors from Top Hospitals within 30 minutes.
                 </p>
                 {/* Cards Section */ }
-                <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 px-6">
+                <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-6 gap-6 px-6">
                     { services.map((service, index) => (
                         <div
                             key={ index }
-                            className={ `p-8 ${service.color} rounded-xl shadow-lg flex flex-col justify-between items-center text-center hover:scale-105 transition-transform` }
+                            className={ `p-8 ${service.color} w-full rounded-xl shadow-lg flex flex-col justify-between items-center text-center hover:scale-105 transition-transform` }
                         >
                             <div className="text-5xl">{ service.icon }</div>
                             <h3 className="text-lg font-semibold text-gray-900">{ service.title }</h3>

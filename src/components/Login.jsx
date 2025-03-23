@@ -27,7 +27,7 @@ const Login = () => {
                 <form onSubmit={ handleSubmit } className="space-y-4">
                     {/* Email Input */ }
                     <div>
-                        <label className="block text-gray-700 text-sm mb-1">Email</label>
+                        <label className="block text-gray-700 text-sm mb-1 text-left font-semibold">Email</label>
                         <div className="relative">
                             <input
                                 type="email"
@@ -43,7 +43,7 @@ const Login = () => {
 
                     {/* Password Input */ }
                     <div>
-                        <label className="block text-gray-700 text-sm mb-1">Password</label>
+                        <label className="block text-gray-700 text-sm mb-1 text-left font-semibold">Password</label>
                         <div className="relative">
                             <input
                                 type={ show ? "text" : "password" }

@@ -31,7 +31,7 @@ const Signup = () => {
                 <form onSubmit={ signupHandleSubmit } className="space-y-4">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                            <label className="block text-gray-700 text-sm">First Name</label>
+                            <label className="block text-gray-700 text-sm text-left font-semibold">First Name</label>
                             <input
                                 type="text"
                                 name="firstName"
@@ -43,7 +43,7 @@ const Signup = () => {
                             />
                         </div>
                         <div>
-                            <label className="block text-gray-700 text-sm">Last Name</label>
+                            <label className="block text-gray-700 text-sm text-left font-semibold">Last Name</label>
                             <input
                                 type="text"
                                 name="lastName"
@@ -57,7 +57,7 @@ const Signup = () => {
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                            <label className="block text-gray-700 text-sm">Email Id</label>
+                            <label className="block text-gray-700 text-sm text-left font-semibold">Email Id</label>
                             <input
                                 type="email"
                                 name="email"
@@ -69,7 +69,7 @@ const Signup = () => {
                             />
                         </div>
                         <div>
-                            <label className="block text-gray-700 text-sm">Phone Number</label>
+                            <label className="block text-gray-700 text-sm text-left font-semibold">Phone Number</label>
                             <input
                                 type="tel"
                                 name="phone"
@@ -82,7 +82,7 @@ const Signup = () => {
                         </div>
                     </div>
                     <div>
-                        <label className="block text-gray-700 text-sm mb-1">Password</label>
+                        <label className="block text-gray-700 text-sm mb-1 text-left font-semibold">Password</label>
                         <div className="relative">
                             <input
                                 type={ show ? "text" : "password" }
@@ -99,7 +99,7 @@ const Signup = () => {
                         </div>
                     </div>
                     <div>
-                        <label className="block text-gray-700 text-sm">Confirm Password</label>
+                        <label className="block text-gray-700 text-sm text-left font-semibold">Confirm Password</label>
                         <div className="relative">
                             <input
                                 type={ showConfirmPassword ? "text" : "password" }
@@ -126,7 +126,7 @@ const Signup = () => {
                         />
                         <label className="text-sm text-gray-700">
                             I agree to all the{ " " }
-                            <span className="text-teal-600 font-semibold">Terms</span> and{ " " }
+                            <span className="text-red-500 font-semibold">Terms</span> and{ " " }
                             <span className="text-red-500 font-semibold">Privacy Policies</span>
                         </label>
                     </div>

@@ -13,8 +13,8 @@ const ForgotPassword = () => {
             <div className="bg-white shadow-lg rounded-lg p-8 max-w-3xl flex flex-col md:flex-row">
                 {/* Left Side */ }
                 <div className="md:w-1/2 pr-6">
-                    <Link to="/login" className="text-gray-500 text-sm mb-4 inline-block">
-                        ← Back to login
+                    <Link to="/login" className="text-gray-500 text-sm mb-4 inline-block font-bold">
+                        ⬅️ Back to login
                     </Link>
                     <h2 className="text-3xl font-bold mb-4">Forgot your password?</h2>
                     <p className="text-gray-500 mb-6">
@@ -22,8 +22,8 @@ const ForgotPassword = () => {
                     </p>
 
                     <form onSubmit={ handleResetPassword } className="space-y-4">
-                        <div>
-                            <label className="text-sm font-semibold text-gray-600">Email Id</label>
+                        <div className="text-left">
+                            <label className="font-semibold text-gray-600">Email Id</label>
                             <input
                                 type="email"
                                 name="email"

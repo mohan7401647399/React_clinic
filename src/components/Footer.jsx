@@ -30,16 +30,16 @@ const Footer = () => {
                         <h3 className="text-lg font-bold">Contact Us</h3>
                         <ul className="mt-4 space-y-2 text-sm">
                             <li className="flex items-center space-x-2">
-                                📞 <span>+91 78269 11911</span>
+                                📞 <span className="p-1">+91 78269 11911</span>
                             </li>
                             <li className="flex items-center space-x-2">
-                                📧 <span>Smarthealthclinics@gmail.com</span>
+                                📧 <span className="p-1">Smarthealthclinics@gmail.com</span>
+                            </li>
+                            <li className="flex items-center text-left space-x-2">
+                                📍<span className="p-1"> AL-49, Old No: 115-A, 4th Avenue Shanthi Colony Main Road, Annanagar, Chennai – 600040</span>
                             </li>
                             <li className="flex items-center space-x-2">
-                                📍 <span>AL-49, Old No: 115-A, 4th Avenue Shanthi Colony Main Road, Annanagar, Chennai – 600040</span>
-                            </li>
-                            <li className="flex items-center space-x-2">
-                                ⏰ <span>Mon-Fri: 9:00 AM - 9:00 PM</span>
+                                ⏰ <span className="p-1">Mon-Fri: 9:00 AM - 9:00 PM</span>
                             </li>
                         </ul>
                     </div>
