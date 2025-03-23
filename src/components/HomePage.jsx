@@ -1,13 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import HomePageHero from "../Assets/HomePageHero.png";
 import National from "../Assets/national.png";
 import Doctor from "../Assets/doctor.png";
 import { FaArrowRight } from "react-icons/fa";
+import card1 from "../Assets/Card1.png";
+import card2 from "../Assets/Card2.png";
+import card3 from "../Assets/Card3.png";
+import card4 from "../Assets/Card4.png";
+import { userContext } from "./contextAPI";
 
 const HomePage = () => {
+
+    const { services } = useContext(userContext)
+
     return (
         <div className="bg-gray-100">
-
             {/* Hero Section */ }
             <div className="flex flex-col-reverse md:flex-row items-center justify-between bg-teal-100 px-6 md:px-16 py-12">
                 {/* Left Text Section */ }
@@ -39,47 +46,61 @@ const HomePage = () => {
 
 
             {/* Appointment section */ }
-            <div className="fixed flex justify-center md:justify-end p-6">
-                <a href="/user" className="bg-orange-600 font-semibold text-white px-10 py-6 rounded-lg hover:bg-gray-800 transition">
+            <div className="fixed flex justify-center md:justify-end p-6 blink">
+                <a href="/user" className="bg-orange-600 font-semibold text-white px-10 py-6 rounded-full hover:bg-gray-800 hover:scale-105 transition">
                     Consult a Doctor Now
                 </a>
             </div>
 
             {/* Services Section */ }
-            <section className="py-12 text-center">
-                <h2 className="text-2xl font-semibold text-gray-800">
+            <div className="py-12 text-center">
+                <h2 className="text-3xl font-bold text-gray-800">
                     Consult Specialist Doctors Online on Video/Audio Call & Chat
                 </h2>
-                <p className="text-gray-600 p-2">Consult Doctors from Top Hospitals within 30 minutes.</p>
-                <div className="flex flex-wrap justify-center mt-6 gap-4">
-                    { ["Talk to Doctor", "Medicine", "Lab Test & Packages", "Book Dr. Appointment", "Insurance"].map(
-                        (service, index) => (
-                            <div
-                                key={ index }
-                                className="p-6 bg-white shadow-lg rounded-md w-40 text-center"
-                            >
-                                <p className="text-lg font-semibold">{ service }</p>
-                                <button className="text-blue-500 text-sm mt-2">More info</button>
+                <p className="text-gray-600 mt-2">
+                    Consult Doctors from Top Hospitals within 30 minutes.
+                </p>
+                {/* Cards Section */ }
+                <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 px-6">
+                    { services.map((service, index) => (
+                        <div
+                            key={ index }
+                            className={ `p-8 ${service.color} rounded-xl shadow-lg flex flex-col justify-between items-center text-center hover:scale-105 transition-transform` }
+                        >
+                            <div className="text-5xl">{ service.icon }</div>
+                            <h3 className="text-lg font-semibold text-gray-900">{ service.title }</h3>
+                            <div className="px-2 flex justify-around items-center space-x-2 hover:scale-105 transition border-2 rounded-lg border-gray-900">
+                                <button className="text-gray-900 py-2 rounded-md ">More info
+                                </button>
+                                <FaArrowRight className="text-gray-900" />
                             </div>
-                        )
-                    ) }
+                        </div>
+                    )) }
                 </div>
-            </section>
+            </div>
 
             {/* SmartHealth GOLD Section */ }
-            <div className="flex justify-around bg-teal-500 p-4">
-                <section className="py-12 text-left">
-                    <p>Mayden SmartHealth GOLD</p>
-                    <h2 className="text-3xl font-bold text-gray-800">
-                        Give the care your family deserves
-                    </h2>
-                    <p className="mt-2">
-                        Unlimited Consultations with top Doctors for 6 family members in 25+ specialities and Different languages
-                    </p>
-                    <button className="mt-4 px-6 py-3 bg-orange-300 font-semibold rounded-md flex items-center hover:scale-110">
-                        Buy Mayden SmartHealth Gold <span className="ml-2"><FaArrowRight /></span>
-                    </button>
-                </section>
+            <div className=" bg-teal-500 p-4">
+                <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between items-center space-y-8 lg:space-y-0 lg:space-x-12">
+                    <section className="py-12 text-left">
+                        <p>Mayden SmartHealth GOLD</p>
+                        <h2 className="text-3xl font-bold text-gray-800">
+                            Give the care your family deserves
+                        </h2>
+                        <p className="mt-2">
+                            Unlimited Consultations with top Doctors for 6 family members in 25+ specialities and Different languages
+                        </p>
+                        <button className="mt-4 px-6 py-3 bg-orange-300 font-semibold rounded-md flex items-center hover:scale-110">
+                            Buy Mayden SmartHealth Gold <span className="ml-2"><FaArrowRight /></span>
+                        </button>
+                    </section>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:w-1/2">
+                        <img src={ card1 } alt="Unlimited Free Consultations" className="w-[250px]" />
+                        <img src={ card2 } alt="Video Consultations" className="w-[250px]" />
+                        <img src={ card3 } alt="Free For All Health Problems" className="w-[250px]" />
+                        <img src={ card4 } alt="Free For Full Family" className="w-[250px]" />
+                    </div>
+                </div>
             </div>
 
             {/* Doctor Signup Section */ }

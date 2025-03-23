@@ -6,6 +6,7 @@ import instagram from '../Assets/Instagram.png'
 import linkedin from '../Assets/Linkedin.png'
 import youtube from '../Assets/Youtube.png'
 import pinterest from '../Assets/pinterest.png'
+import logo from '../Assets/logo.png';
 
 const Footer = () => {
     return (
@@ -14,10 +15,8 @@ const Footer = () => {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {/* Left Section - About */ }
                     <div className="flex flex-col items-start">
-                        <div className="bg-white p-4 rounded-xl">
-                            <h2 className="text-teal-700 font-bold text-xl">
-                                <span className="text-orange-400">MY SMARTHEALTH</span> CLINIC
-                            </h2>
+                        <div className="p-2 m-auto">
+                            <img src={ logo } alt="Clinic Logo" className="" />
                         </div>
                         <h3 className="text-lg font-bold mt-4">About</h3>
                         <p className="mt-2 text-sm">

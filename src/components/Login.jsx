@@ -6,7 +6,8 @@ import { FaEyeSlash } from "react-icons/fa6";
 import { userContext } from "../components/contextAPI.jsx";
 
 const Login = () => {
-    const { show, setShow, loginFormData, error, handleChange, handleSubmit } = useContext(userContext);
+
+    const { show, setShow, loginFormData, handleChange, handleSubmit } = useContext(userContext);
 
     return (
         <div className="min-h-screen flex flex-col md:flex-row items-center justify-center bg-gray-100 p-5">
@@ -22,8 +23,6 @@ const Login = () => {
                 <p className="text-gray-600 mb-6">
                     Login to access your Patient account
                 </p>
-
-                { error && <p className="text-red-500 text-center">{ error }</p> }
 
                 <form onSubmit={ handleSubmit } className="space-y-4">
                     {/* Email Input */ }

@@ -8,8 +8,9 @@ import ForgotPassword from './components/ForgotPassword';
 import HomePage from './components/HomePage';
 import Login from './components/Login';
 import Navbar from './components/Navbar';
-import PatientPage from './components/PatientPage';
+import ConsultPage from './components/ConsultPage';
 import Signup from './components/Signup';
+import { ToastContainer, toast } from "react-toastify";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -35,10 +36,12 @@ function App() {
           <Route path="/login" element={ <Login /> } />
           <Route path="/forgot-password" element={ <ForgotPassword /> } />
           <Route
-            path="/user" element={ user ? <PatientPage /> : <Navigate to="/login" /> }
+            path="/user" element={ user ? <ConsultPage /> : <Navigate to="/login" /> }
           />
         </Routes>
         <Footer />
+        {/* ToastContainer */ }
+        <ToastContainer position="top-right" autoClose={ 3000 } hideProgressBar={ false } />
       </div>
     </Router>
   );

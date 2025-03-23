@@ -6,7 +6,7 @@ import { FaEyeSlash } from "react-icons/fa6";
 import { userContext } from "./contextAPI";
 
 const Signup = () => {
-    const { show, setShow, showConfirmPassword, setShowConfirmPassword, formData, signUpError, signupHandleChange, signupHandleSubmit } = useContext(userContext);
+    const { show, setShow, showConfirmPassword, setShowConfirmPassword, formData, signupHandleChange, signupHandleSubmit } = useContext(userContext);
 
     return (
         <div className="flex flex-col md:flex-row items-center justify-center min-h-screen bg-gray-100 p-5">
@@ -28,7 +28,6 @@ const Signup = () => {
                 <p className="text-gray-600 mb-4 text-center">
                     Let's get you all set up so you can access your personal account.
                 </p>
-                { signUpError && <p className="text-red-500 text-center">{ signUpError }</p> }
                 <form onSubmit={ signupHandleSubmit } className="space-y-4">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>

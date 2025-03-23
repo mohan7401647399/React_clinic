@@ -1,11 +1,12 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { auth } from "../firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import client_Call from '../Assets/ClientCall.png';
+import { userContext } from "./contextAPI";
 
-const PatientPage = () => {
-    const [user, setUser] = useState(null);
+const ConsultPage = () => {
+    const { user, setUser, infoData, setInfoData, infoHandlePage, infoHandleSubmit } = useContext(userContext);
     const navigate = useNavigate();
 
     /* Check if user is logged in */
@@ -17,32 +18,9 @@ const PatientPage = () => {
                 navigate("/login");
             }
         });
-
         return () => unsubscribe();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [navigate]);
-
-    // Patient info form
-    const [formData, setFormData] = useState({
-        name: "",
-        dob: "",
-        bloodType: "",
-        height: "",
-        weight: "",
-        complaints: ["", "", "", "", ""],
-        files: ["", "", "", ""],
-    });
-
-    // Form handling
-    const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-    };
-
-    //  Submit form
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log("Submitted Data:", formData);
-        alert("Form submitted successfully!");
-    };
 
     return (
         <div className="p-4 md:p-6 bg-gray-100 min-h-screen">
@@ -59,7 +37,7 @@ const PatientPage = () => {
             {/* Patient Info Form */ }
             <div className="max-w-5xl mx-auto">
                 <h2 className="text-2xl font-bold mb-4">Patient Info</h2>
-                <form onSubmit={ handleSubmit } className="bg-white p-6 shadow rounded-lg grid grid-cols-1 md:grid-cols-3 gap-6">
+                <form onSubmit={ infoHandleSubmit } className="bg-white p-6 shadow rounded-lg grid grid-cols-1 md:grid-cols-3 gap-6">
 
                     {/* Patient Info Section */ }
                     <div className="p-4 border rounded-lg">
@@ -67,8 +45,8 @@ const PatientPage = () => {
                         <input
                             type="text"
                             name="name"
-                            value={ formData.name }
-                            onChange={ handleChange }
+                            value={ infoData.name }
+                            onChange={ infoHandlePage }
                             className="w-full p-2 border rounded mt-1"
                             placeholder="Enter name"
                         />
@@ -77,8 +55,8 @@ const PatientPage = () => {
                         <input
                             type="date"
                             name="dob"
-                            value={ formData.dob }
-                            onChange={ handleChange }
+                            value={ infoData.dob }
+                            onChange={ infoHandlePage }
                             className="w-full p-2 border rounded mt-1"
                         />
 
@@ -86,8 +64,8 @@ const PatientPage = () => {
                         <input
                             type="text"
                             name="bloodType"
-                            value={ formData.bloodType }
-                            onChange={ handleChange }
+                            value={ infoData.bloodType }
+                            onChange={ infoHandlePage }
                             className="w-full p-2 border rounded mt-1"
                             placeholder="Enter blood type"
                         />
@@ -96,8 +74,8 @@ const PatientPage = () => {
                         <input
                             type="text"
                             name="height"
-                            value={ formData.height }
-                            onChange={ handleChange }
+                            value={ infoData.height }
+                            onChange={ infoHandlePage }
                             className="w-full p-2 border rounded mt-1"
                             placeholder="Enter height"
                         />
@@ -106,8 +84,8 @@ const PatientPage = () => {
                         <input
                             type="text"
                             name="weight"
-                            value={ formData.weight }
-                            onChange={ handleChange }
+                            value={ infoData.weight }
+                            onChange={ infoHandlePage }
                             className="w-full p-2 border rounded mt-1"
                             placeholder="Enter weight"
                         />
@@ -117,15 +95,15 @@ const PatientPage = () => {
                     <div className="p-4 border rounded-lg">
                         <h3 className="font-semibold mb-2">Complaints:</h3>
                         <div className="overflow-auto max-h-60">
-                            { formData.complaints.map((complaint, index) => (
+                            { infoData.complaints.map((complaint, index) => (
                                 <input
                                     key={ index }
                                     type="text"
                                     value={ complaint }
                                     onChange={ (e) => {
-                                        const newComplaints = [...formData.complaints];
+                                        const newComplaints = [...infoData.complaints];
                                         newComplaints[index] = e.target.value;
-                                        setFormData({ ...formData, complaints: newComplaints });
+                                        setInfoData({ ...infoData, complaints: newComplaints });
                                     } }
                                     className="w-full p-2 border rounded mt-1"
                                     placeholder={ `Complaint ${index + 1}` }
@@ -138,15 +116,15 @@ const PatientPage = () => {
                     <div className="p-4 border rounded-lg">
                         <h3 className="font-semibold mb-2">Files:</h3>
                         <div className="overflow-auto max-h-60">
-                            { formData.files.map((file, index) => (
+                            { infoData.files.map((file, index) => (
                                 <input
                                     key={ index }
                                     type="text"
                                     value={ file }
                                     onChange={ (e) => {
-                                        const newFiles = [...formData.files];
+                                        const newFiles = [...infoData.files];
                                         newFiles[index] = e.target.value;
-                                        setFormData({ ...formData, files: newFiles });
+                                        setInfoData({ ...infoData, files: newFiles });
                                     } }
                                     className="w-full p-2 border rounded mt-1"
                                     placeholder={ `File ${index + 1}` }
@@ -167,4 +145,4 @@ const PatientPage = () => {
     );
 };
 
-export default PatientPage;
+export default ConsultPage;

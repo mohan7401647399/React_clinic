@@ -1,51 +1,12 @@
-import { useState } from "react";
+import { useContext } from "react";
 import forgot from "../Assets/forgot_logo.png"
-import { sendPasswordResetEmail } from "firebase/auth";
 import { FaFacebook, FaGoogle, FaApple } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { auth, googleProvider, facebookProvider, signInWithPopup } from "../firebase";
+import { userContext } from "./contextAPI";
 
-//  Google Sign-In
-const handleGoogleSignIn = async () => {
-    try {
-        const result = await signInWithPopup(auth, googleProvider);
-        console.log("Google User:", result.user);
-    } catch (error) {
-        console.error("Google Sign-In Error:", error.message);
-    }
-};
-
-//  Facebook Sign-In
-const handleFacebookSignIn = async () => {
-    try {
-        const result = await signInWithPopup(auth, facebookProvider);
-        console.log("Facebook User:", result.user);
-    } catch (error) {
-        console.error("Facebook Sign-In Error:", error.message);
-    }
-};
-
-//  Forgot Password component
 const ForgotPassword = () => {
-    const [email, setEmail] = useState("");
-    const [message, setMessage] = useState(null);
-    const [error, setError] = useState(null);
-    const [loading, setLoading] = useState(false);
 
-    const handleResetPassword = async (e) => {
-        e.preventDefault();
-        setLoading(true);
-        setMessage(null);
-        setError(null);
-
-        try {
-            await sendPasswordResetEmail(auth, email);
-            setMessage("A password reset email has been sent to your inbox.");
-        } catch (error) {
-            setError(error.message);
-        }
-        setLoading(false);
-    };
+    const { handleFacebookSignIn, handleGoogleSignIn, email, setEmail, handleResetPassword, loading } = useContext(userContext);
 
     return (
         <div className="flex min-h-screen items-center justify-center bg-gray-100 p-6">
@@ -60,14 +21,12 @@ const ForgotPassword = () => {
                         Don’t worry, happens to all of us. Enter your email below to recover your password.
                     </p>
 
-                    { message && <p className="text-green-600 text-sm mb-4">{ message }</p> }
-                    { error && <p className="text-red-600 text-sm mb-4">{ error }</p> }
-
                     <form onSubmit={ handleResetPassword } className="space-y-4">
                         <div>
                             <label className="text-sm font-semibold text-gray-600">Email Id</label>
                             <input
                                 type="email"
+                                name="email"
                                 placeholder="Enter Your Email Id"
                                 value={ email }
                                 onChange={ (e) => setEmail(e.target.value) }
