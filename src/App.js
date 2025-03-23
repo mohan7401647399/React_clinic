@@ -10,7 +10,7 @@ import Login from './components/Login';
 import Navbar from './components/Navbar';
 import ConsultPage from './components/ConsultPage';
 import Signup from './components/Signup';
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   const [user, setUser] = useState(null);
