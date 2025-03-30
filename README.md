@@ -1,5 +1,7 @@
 # React Clinic Web App
 
+# Live URL - https://react-clinic-web-app.netlify.app/
+
 ## 🏥 Project Overview
 The **React Clinic Web App** is a modern healthcare management system designed to streamline clinic operations. This web-based application allows users to book appointments, manage patient records, and access essential healthcare services seamlessly. The project leverages the latest web technologies to ensure a fast, secure, and user-friendly experience.
 
